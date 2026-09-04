@@ -32,6 +32,10 @@
     var isDark = root.dataset.theme === "dark";
     var isEnglish = root.lang === "en";
 
+    if (!themeToggle) {
+      return;
+    }
+
     themeToggle.setAttribute("aria-pressed", String(isDark));
     themeToggle.setAttribute(
       "aria-label",
@@ -45,7 +49,9 @@
     var isDark = theme === "dark";
 
     root.dataset.theme = theme;
-    themeColor.setAttribute("content", isDark ? "#0b0b0b" : "#ffffff");
+    if (themeColor) {
+      themeColor.setAttribute("content", isDark ? "#0b0b0b" : "#ffffff");
+    }
     updateThemeLabel();
 
     try {
@@ -63,26 +69,46 @@
       node.textContent = node.dataset[language];
     });
 
-    toggle.setAttribute("aria-pressed", String(isEnglish));
-    toggle.setAttribute(
-      "aria-label",
-      isEnglish ? "切换到中文" : "Switch to English"
-    );
-    toggleOptions[0].classList.toggle("active", !isEnglish);
-    toggleOptions[1].classList.toggle("active", isEnglish);
-    portrait.alt = isEnglish ? "Portrait of Chai Chunyan" : "柴春燕肖像";
-    qrImage.alt = isEnglish
-      ? "QR code for Chai Chunyan's WeChat Official Account"
-      : "柴春燕微信公众号二维码";
-    title.textContent = isEnglish
-      ? "Chai Chunyan | Technology Leader"
-      : "柴春燕 | 技术负责人";
-    description.setAttribute(
-      "content",
-      isEnglish
-        ? "Chai Chunyan, Technology Leader at ByteDance, focused on enterprise AI transformation, AI-native applications, platform engineering, and high-availability architecture."
-        : "柴春燕，字节跳动技术负责人。专注企业智能化转型、AI 原生应用、平台工程与高可用架构。"
-    );
+    if (toggle) {
+      toggle.setAttribute("aria-pressed", String(isEnglish));
+      toggle.setAttribute(
+        "aria-label",
+        isEnglish ? "切换到中文" : "Switch to English"
+      );
+    }
+    if (toggleOptions.length >= 2) {
+      toggleOptions[0].classList.toggle("active", !isEnglish);
+      toggleOptions[1].classList.toggle("active", isEnglish);
+    }
+    if (portrait) {
+      portrait.alt = isEnglish ? "Portrait of Chai Chunyan" : "柴春燕肖像";
+    }
+    if (qrImage) {
+      qrImage.alt = isEnglish
+        ? "QR code for Chai Chunyan's WeChat Official Account"
+        : "柴春燕微信公众号二维码";
+    }
+    if (document.body.dataset.titleZh) {
+      title.textContent = isEnglish
+        ? document.body.dataset.titleEn
+        : document.body.dataset.titleZh;
+      description.setAttribute(
+        "content",
+        isEnglish
+          ? document.body.dataset.descriptionEn
+          : document.body.dataset.descriptionZh
+      );
+    } else if (portrait) {
+      title.textContent = isEnglish
+        ? "Chai Chunyan | Technology Leader"
+        : "柴春燕 | 技术负责人";
+      description.setAttribute(
+        "content",
+        isEnglish
+          ? "Chai Chunyan, Technology Leader at ByteDance, focused on enterprise AI transformation, AI-native applications, platform engineering, and high-availability architecture."
+          : "柴春燕，字节跳动技术负责人。专注企业智能化转型、AI 原生应用、平台工程与高可用架构。"
+      );
+    }
     updateThemeLabel();
 
     try {
@@ -92,15 +118,22 @@
     }
   }
 
-  toggle.addEventListener("click", function () {
-    setLanguage(root.lang === "en" ? "zh" : "en");
-  });
+  if (toggle) {
+    toggle.addEventListener("click", function () {
+      setLanguage(root.lang === "en" ? "zh" : "en");
+    });
+  }
 
-  themeToggle.addEventListener("click", function () {
-    setTheme(root.dataset.theme === "dark" ? "light" : "dark");
-  });
+  if (themeToggle) {
+    themeToggle.addEventListener("click", function () {
+      setTheme(root.dataset.theme === "dark" ? "light" : "dark");
+    });
+  }
 
-  document.getElementById("year").textContent = new Date().getFullYear();
+  var year = document.getElementById("year");
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
   setTheme(initialTheme);
   setLanguage(initialLanguage);
 })();

@@ -661,6 +661,71 @@ footer p {
   font-size: 12px;
 }
 
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: var(--muted);
+  font-family: var(--font-en);
+  font-size: 12px;
+}
+
+.footer-links a:hover {
+  color: var(--pink);
+}
+
+.legal-page {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  padding: 88px 0 72px;
+}
+
+.legal-page header {
+  padding-bottom: 42px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.legal-page h1 {
+  margin: 0;
+  font-size: clamp(44px, 7vw, 72px);
+  line-height: 1.08;
+}
+
+.legal-page .legal-summary {
+  margin: 24px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.legal-section {
+  padding: 42px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.legal-section h2 {
+  margin: 0 0 18px;
+  font-size: 28px;
+}
+
+.legal-section p,
+.legal-section li {
+  color: var(--muted);
+}
+
+.legal-section a {
+  color: var(--cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 :focus-visible {
   outline: 2px solid var(--pink);
   outline-offset: 3px;
