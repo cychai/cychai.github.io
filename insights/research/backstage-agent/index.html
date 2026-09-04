@@ -530,33 +530,8 @@
   <li><strong>审查瓶颈</strong>：PR 频率增长 76% 后，代码审查成为新的瓶颈，需要重新判断哪些可自动合并</li>
 </ul>
 
-<!-- ============ 对字节的启示 ============ -->
-<h2><span class="num">7</span>对字节跳动 / 搜索服务端的启示</h2>
-
-<div class="card">
-  <h3>7.1 可直接借鉴的模式</h3>
-  <ol>
-    <li><strong>以服务目录为 Agent 上下文底座</strong>：字节内部已有类似的服务治理/目录平台，可考虑通过 MCP 暴露服务元数据、所有权、依赖关系，让 AI 编码 Agent 获得企业上下文。这比让 Agent 凭空猜测服务归属和接口规范高效得多。</li>
-    <li><strong>后台编码 Agent + 批量迁移</strong>：搜索服务端存在大量框架升级、SDK 迁移、配置标准化等批量变更场景。可参考 Honk + Fleet Management 模式，用自然语言定义迁移规则，Agent 执行+CI 验证+自动 PR，将迁移从"数百团队数周"压缩到"单工程师数天"。</li>
-    <li><strong>RAG 知识助手降低上手成本</strong>：搜索系统复杂度高、新人上手周期长。类似 AiKA 的 RAG 助手可显著减少"这个服务谁负责""这个参数什么意思"类问题，同时形成文档质量的正向飞轮。</li>
-    <li><strong>一致性护栏提升 Agent 表现</strong>：Spotify 量化验证了代码一致性对 Agent 性能的正向影响。搜索服务端可通过 Golden Path 模板 + Lint 规则 + 静态分析，为 Agent 提供即时反馈闭环。</li>
-  </ol>
-
-  <h3>7.2 需要谨慎评估的点</h3>
-  <ul>
-    <li><strong>安全边界</strong>：搜索服务端涉及核心线上服务，Agent 的写操作必须有严格的权限控制和人工审批。建议从只读场景（查询、诊断、文档生成）开始，逐步开放写操作。</li>
-    <li><strong>LLM 供应商选择</strong>：字节内部有自研大模型能力，可参考 Backstage AI 服务抽象层的设计，做提供商无关的统一接口，避免锁定。</li>
-    <li><strong>成本控制</strong>：大规模 Agent 运行的 Token 成本需要精细化计量和配额管理，Honk 的 LLM quota 管理和 Trace 采集值得参考。</li>
-    <li><strong>与现有工具链的集成</strong>：字节已有 Bits、TCE、Codebase 等完善的研发工具链，Backstage 模式更适合作为"上下文层"而非替代现有工具。MCP 是连接两者的理想协议。</li>
-  </ul>
-
-  <div class="callout">
-    <strong>建议落地路径：</strong>第一步（1-2 月）在现有服务目录平台上试点 MCP 只读接口 + RAG 知识助手；第二步（3-6 月）引入后台编码 Agent 处理 1-2 个低风险批量迁移场景；第三步（6-12 月）建立 Agent 编排平台，支持多 Agent 协作和人类在环审批。
-  </div>
-</div>
-
 <!-- ============ 参考来源 ============ -->
-<h2><span class="num">8</span>参考来源</h2>
+<h2><span class="num">7</span>参考来源</h2>
 <div class="card">
   <ul class="source-list">
     <li><a href="https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint" target="_blank">Coding Is No Longer the Constraint: Scaling Developer Experience to Teams and Agents at Spotify (Spotify Engineering, 2026.06)</a></li>
