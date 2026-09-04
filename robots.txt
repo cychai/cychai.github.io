@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cychai.github.io/sitemap.xml
