@@ -157,6 +157,29 @@ h1 {
   margin-top: 0 !important;
 }
 
+.article-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin: 0 0 26px;
+  color: var(--article-muted);
+  font-family: var(--article-en);
+  font-size: 12px;
+}
+
+.article-breadcrumb a {
+  color: var(--article-muted);
+  text-decoration: none;
+}
+
+.article-breadcrumb a:hover {
+  color: var(--article-pink);
+}
+
+.article-breadcrumb [aria-current="page"] {
+  color: var(--article-ink);
+}
+
 .eyebrow,
 .kicker {
   color: var(--article-pink) !important;
@@ -179,6 +202,17 @@ h1 {
   color: var(--article-muted) !important;
   font-family: var(--article-en) !important;
   font-size: 12px !important;
+}
+
+.meta a,
+.subtitle a {
+  color: var(--article-pink);
+  text-decoration: none;
+}
+
+.meta a:hover,
+.subtitle a:hover {
+  text-decoration: underline;
 }
 
 nav.toc {

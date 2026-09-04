@@ -100,13 +100,13 @@
       );
     } else if (portrait) {
       title.textContent = isEnglish
-        ? "Chai Chunyan | Technology Leader"
-        : "柴春燕 | 技术负责人";
+        ? "Chai Chunyan | Technology Leader · AI Search & Agent Engineering"
+        : "柴春燕｜技术负责人 · AI 搜索与 Agent 工程化";
       description.setAttribute(
         "content",
         isEnglish
-          ? "Chai Chunyan, Technology Leader at ByteDance, focused on enterprise AI transformation, AI-native applications, platform engineering, and high-availability architecture."
-          : "柴春燕，字节跳动技术负责人。专注企业智能化转型、AI 原生应用、平台工程与高可用架构。"
+          ? "Chai Chunyan is a Technology Leader at ByteDance with 18 years of experience, focused on AI search, GEO, agent engineering, and platform architecture."
+          : "柴春燕，字节跳动技术负责人，拥有 18 年互联网研发与技术管理经验，关注 AI 搜索、GEO、Agent 工程化与平台架构。"
       );
     }
     updateThemeLabel();

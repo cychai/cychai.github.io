@@ -164,6 +164,28 @@ button { font: inherit; }
   content: "";
 }
 
+.editorial-note {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 32px;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.editorial-note strong {
+  color: var(--ink);
+  font-family: var(--font-en);
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.editorial-note p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
 .section { padding: 72px 0; border-bottom: 1px solid var(--rule); }
 .section-head {
   display: flex;
@@ -356,6 +378,10 @@ footer {
   .hero { padding: 70px 0 54px; }
   .hero h1 { font-size: 46px; }
   .hero .dek { font-size: 17px; }
+  .editorial-note {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
   .section { padding: 56px 0; }
   .section-head { display: block; }
   .section-head p { margin-top: 6px; }
