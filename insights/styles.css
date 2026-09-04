@@ -165,25 +165,23 @@ button { font: inherit; }
 }
 
 .editorial-note {
-  display: grid;
-  grid-template-columns: 160px minmax(0, 1fr);
-  gap: 32px;
-  padding: 30px 0;
-  border-bottom: 1px solid var(--rule);
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 22px 0 0;
 }
 
 .editorial-note strong {
-  color: var(--ink);
-  font-family: var(--font-en);
-  font-size: 12px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 13px;
 }
 
 .editorial-note p {
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 13px;
+  line-height: 1.7;
 }
 
 .section { padding: 72px 0; border-bottom: 1px solid var(--rule); }
@@ -204,64 +202,6 @@ button { font: inherit; }
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
-}
-
-.content-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid var(--rule);
-  border-left: 1px solid var(--rule);
-}
-
-.content-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  min-height: 330px;
-  padding: 25px;
-  border-right: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  transition: background 160ms ease, transform 160ms ease;
-}
-
-.content-card:hover {
-  background: var(--surface);
-  transform: translateY(-3px);
-}
-
-.content-meta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 12px;
-  color: var(--muted);
-  font-family: var(--font-en);
-  font-size: 11px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-
-.content-card h3 {
-  margin: 38px 0 12px;
-  font-size: 24px;
-  line-height: 1.35;
-  overflow-wrap: break-word;
-}
-
-.content-card p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 15px;
-  overflow-wrap: break-word;
-}
-
-.content-card .arrow {
-  margin-top: auto;
-  padding-top: 28px;
-  color: var(--pink);
-  font-family: var(--font-en);
-  font-weight: 700;
 }
 
 .category-list { border-top: 1px solid var(--rule); }
@@ -364,8 +304,6 @@ footer {
     grid-column: 2;
     grid-row: 1;
   }
-  .content-grid { grid-template-columns: 1fr; }
-  .content-card { min-height: 240px; }
 }
 
 @media (max-width: 640px) {
@@ -379,7 +317,8 @@ footer {
   .hero h1 { font-size: 46px; }
   .hero .dek { font-size: 17px; }
   .editorial-note {
-    grid-template-columns: 1fr;
+    align-items: flex-start;
+    flex-direction: column;
     gap: 8px;
   }
   .section { padding: 56px 0; }
